@@ -14,4 +14,8 @@
     <name>menu</name>	
     <path>/WEB-INF/tags/menu.tag</path>	
   </tag-file>
+    <tag-file>	
+    <name>links</name>	
+    <path>/WEB-INF/tags/links.tag</path>	
+  </tag-file>
 </taglib>

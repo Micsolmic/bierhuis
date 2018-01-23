@@ -41,4 +41,9 @@ void initBinderPostcodeReeks(DataBinder dataBinder) {
 dataBinder.setRequiredFields("naam", "leeftijd"); 
 }
 
+@ModelAttribute("persoon")
+public Persoon plainVenue() {
+    return new Persoon();
+}
+
 }

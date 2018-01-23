@@ -5,16 +5,19 @@
 <%@taglib prefix='v' uri='http://vdab.be/tags'%>
 <!doctype html>
 <html>
-<head>
-<title></title>
-</head>
+<v:head title='Beginpagina'/>
 <body>
-
+<v:links/>
+<h1>Welkom in het huis van de Belgische bieren</h1>
+<img src='/bierhuis/images/bierhuis.jpg' alt='afbeelding niet beschikbaar' title='bieren'/>
+<br>
+<p>We hebben momenteel 1186 bieren</p>
+<hr>
 <h1>index page</h1>
 <form:form  commandName='persoon' method='get'> 
-<form:label path='naam'>input1:</form:label> 
+<form:label path='naam'>naam: <form:errors path='naam'/> </form:label> 
 <form:input path='naam' autofocus='autofocus'/> 
-<form:label path='leeftijd'>input2:</form:label>
+<form:label path='leeftijd'>leeftijd: <form:errors path='leeftijd'/> </form:label>
 <form:input path='leeftijd'/>
 <input type='submit' value='submit'> 
 </form:form>
