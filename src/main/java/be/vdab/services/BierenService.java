@@ -1,6 +1,7 @@
 package be.vdab.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -21,5 +22,9 @@ public class BierenService {
 		
 		return bierenRepo.alleBierenVanBrouwer(id);
 		
+	}
+	
+	public Optional<Bier> read(int id) {
+		return bierenRepo.read(id);
 	}
 }

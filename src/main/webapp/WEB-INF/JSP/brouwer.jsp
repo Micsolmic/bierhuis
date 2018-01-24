@@ -5,17 +5,17 @@
 <%@taglib prefix='v' uri='http://vdab.be/tags'%>
 <!doctype html>
 <html>
-<v:head title='Brouwers alfabetisch'/>
+<v:head title='Brouwer info'/>
 <body>
 <v:links/>
-<h1>Brouwers</h1>
+<h1>${brouwer.naam}(${brouwer.adres.gemeente})</h1>
 
 <div class="lijst">
-<c:forEach var='brouwer' items='${brouwers}'>
+<c:forEach var='bier' items='${bieren}'>
 
-<c:url value='/brouwers/${brouwer.id}' var='url'/>
+<c:url value='/brouwers/${brouwer.id}/${bier.id}' var='url'/>
 
-<a href='${url}'>${brouwer.naam} (${brouwer.adres.gemeente})</a>
+<a href='${url}'>${bier.naam}</a>
 
 </c:forEach>
 </div>

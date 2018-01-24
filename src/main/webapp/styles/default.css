@@ -1,9 +1,17 @@
 @charset "ISO-8859-1";
 
+body{background-color: #ffd6c1;}
+
 #links{margin-bottom: 2em;}
 img{display:block;}
 
 #naam.errors{color: red;}
 
-#brouwerslijst > * {display:block; text-decoration:none;}
-#brouwerslijst a:nth-child(2n){background-color: #fef1ab;}
+.lijst > * {display:block; text-decoration:none; color: #7d3f00; }
+.lijst a:nth-child(2n){background-color: #fef1ab;}
+
+.submitKnop{
+	
+	margin-top: 2em;
+	
+}

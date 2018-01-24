@@ -9,6 +9,7 @@ import be.vdab.datasource.DataSourceConfig;
 import be.vdab.repositories.RepositoriesConfig;
 import be.vdab.services.ServicesConfig;
 
+
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override
@@ -17,7 +18,8 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
 	}
 	@Override
 	protected Class<?>[] getRootConfigClasses() { 
-	return new Class<?>[] {DataSourceConfig.class, RepositoriesConfig.class,   ServicesConfig.class }; 
+	return new Class<?>[] {
+		DataSourceConfig.class, RepositoriesConfig.class,   ServicesConfig.class }; 
 	}
 	@Override
 	protected Class<?>[] getServletConfigClasses() { 

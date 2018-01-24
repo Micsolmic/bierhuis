@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import be.vdab.valueobjects.Persoon;
+
 
 // enkele imports ...
 @Controller 
@@ -26,24 +26,8 @@ return new ModelAndView(INDEX_VIEW);
 
 
 
-@GetMapping(params = {"naam", "leeftijd"})
-ModelAndView controleerInput(Persoon persoon, 
-BindingResult bindingResult) { 
-ModelAndView modelAndView = new ModelAndView(INDEX_VIEW);
-if ( ! bindingResult.hasErrors()) { 
-modelAndView.addObject("bindingresult","de invoer is correct");
-}else {modelAndView.addObject("bindingresult","de invoer is fout");}
-return modelAndView;
-}
 
-@InitBinder("persoon") 
-void initBinderPostcodeReeks(DataBinder dataBinder) { 
-dataBinder.setRequiredFields("naam", "leeftijd"); 
-}
 
-@ModelAttribute("persoon")
-public Persoon plainVenue() {
-    return new Persoon();
-}
+
 
 }
