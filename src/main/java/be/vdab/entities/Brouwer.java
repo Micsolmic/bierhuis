@@ -10,7 +10,10 @@ import be.vdab.valueobjects.Adres;
 
 public class Brouwer implements Serializable{
 
-	static final long SerialVersionUID = 5L;
+	
+	private static final long serialVersionUID = 1L;
+
+	
 	
 	int id;
 	String naam;

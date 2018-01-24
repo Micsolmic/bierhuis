@@ -4,3 +4,6 @@
 img{display:block;}
 
 #naam.errors{color: red;}
+
+#brouwerslijst > * {display:block; text-decoration:none;}
+#brouwerslijst a:nth-child(2n){background-color: #fef1ab;}
