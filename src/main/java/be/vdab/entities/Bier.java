@@ -20,8 +20,9 @@ public class Bier{
 	double alcohol;
 	@NumberFormat(pattern = "#,##0.##")
 	BigDecimal prijs;
+	int aantal;
 	
-	public Bier(int id, String naam, int brouwerid, String brouwernaam, Soort soort, double alcohol, BigDecimal prijs) {
+	public Bier(int id, String naam, int brouwerid, String brouwernaam, Soort soort, double alcohol, BigDecimal prijs, int aantal) {
 		this.id = id;
 		this.naam = naam;
 		this.brouwerid = brouwerid;
@@ -29,6 +30,15 @@ public class Bier{
 		this.soort = soort;
 		this.alcohol = alcohol;
 		this.prijs = prijs;
+		this.aantal = aantal;
+	}
+
+	public int getAantal() {
+		return aantal;
+	}
+
+	public void setAantal(int aantal) {
+		this.aantal = aantal;
 	}
 
 	public int getId() {

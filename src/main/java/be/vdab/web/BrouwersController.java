@@ -1,9 +1,8 @@
 package be.vdab.web;
 
-import java.util.HashMap;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import be.vdab.entities.Bier;
 import be.vdab.services.BierenService;
 import be.vdab.services.BrouwersService;
 
@@ -22,13 +22,19 @@ class BrouwersController {
 	
 private final BrouwersService brouwersService;
 private final BierenService bierenService;
-private final Mandje mandje;
 
-BrouwersController(BrouwersService bs, BierenService bierens, Mandje mandje){
+
+BrouwersController(BrouwersService bs, BierenService bierens){
 	brouwersService = bs;
 	bierenService = bierens;
-	this.mandje = mandje;
+	
 }
+
+@ModelAttribute("mandje")
+public Mandje getMandje () {
+    return new Mandje();
+}
+
 	
 private static final String BROUWERS_VIEW = "brouwers";
 private static final String BROUWER_VIEW = "brouwer";
@@ -61,10 +67,11 @@ ModelAndView read(@PathVariable int brouwerid, @PathVariable int bierid) {
 
 
 @PostMapping(value="/{brouwerid}/{bierid}", params = {"aantal", "bierid"})
-ModelAndView voegToe(int bierid, int aantal) {
+ModelAndView voegToe(int bierid, int aantal, Mandje mandje) {
 	ModelAndView modelAndView = new ModelAndView(REDIRECT_NAAR_WINKELWAGEN);
-	System.out.println(bierid+" "+aantal);
-	mandje.getInhoud().put(bierid, aantal);
+	Bier bierInMandje = bierenService.read(bierid).get();
+	bierInMandje.setAantal(aantal);
+	mandje.addBier(bierInMandje);
 	return modelAndView;
 }
 

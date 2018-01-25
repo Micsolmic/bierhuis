@@ -6,4 +6,5 @@
 		username='cursist'
 		password='cursist' 
 		closeMethod='close' />
+		<mvc:annotation-driven />
 </Context>

@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 
-body{background-color: #ffd6c1;}
+body{background-color: #fff0c1;}
 
 #links{margin-bottom: 2em;}
 img{display:block;}
@@ -8,7 +8,10 @@ img{display:block;}
 #naam.errors{color: red;}
 
 .lijst > * {display:block; text-decoration:none; color: #7d3f00; }
-.lijst a:nth-child(2n){background-color: #fef1ab;}
+.lijst a:nth-child(2n){background-color: #fdeb82;}
+.lijst tr:nth-child(2n){background-color: #fdeb82;}
+table tr:tr:nth-child(2n){background-color: #fdeb82;}
+
 
 .submitKnop{
 	

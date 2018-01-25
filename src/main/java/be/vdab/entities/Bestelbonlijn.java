@@ -2,22 +2,15 @@ package be.vdab.entities;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
 
-@Entity
-@Table(name = "bestelbonlijnen")
+
 public class Bestelbonlijn {
 	
-	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	
 	int bestelbonid;
 	int bierid;
 	int aantal;

@@ -31,7 +31,7 @@ public class BierenRepository {
 		return new Bier(resultSet.getInt("id"), resultSet.getString("naam"), resultSet.getInt("brouwerid"),
 				resultSet.getString("brouwernaam"),
 				new Soort(resultSet.getInt("soortid"), resultSet.getString("soortnaam")),
-				resultSet.getDouble("alcohol"), resultSet.getBigDecimal("prijs"));
+				resultSet.getDouble("alcohol"), resultSet.getBigDecimal("prijs"), 0);
 	};
 
 	BierenRepository(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
