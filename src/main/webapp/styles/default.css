@@ -18,3 +18,5 @@ table tr:tr:nth-child(2n){background-color: #fdeb82;}
 	margin-top: 2em;
 	
 }
+
+span[id*=".errors"]{color:red;}

@@ -11,7 +11,7 @@
 <h1>Welkom in het huis van de Belgische bieren</h1>
 <img src='/bierhuis/images/bierhuis.jpg' alt='afbeelding niet beschikbaar' title='bieren'/>
 <br>
-<p>We hebben momenteel 1186 bieren</p>
+<p>We hebben momenteel ${beerCount} bieren</p>
 
 
 </body>

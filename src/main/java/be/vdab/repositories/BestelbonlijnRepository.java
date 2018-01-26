@@ -1,6 +1,7 @@
 package be.vdab.repositories;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,6 +10,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import be.vdab.entities.Bestelbonlijn;
+import be.vdab.entities.Bier;
 
 @Repository
 public class BestelbonlijnRepository {
@@ -20,16 +22,27 @@ public class BestelbonlijnRepository {
 	public BestelbonlijnRepository(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
 		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate); 
 		simpleJdbcInsert.withTableName("bestelbonlijnen"); 
-		simpleJdbcInsert.usingGeneratedKeyColumns("bestelbonid");
+		
 	}
 	
-	public void create(Bestelbonlijn bblijn) {
+	public void create(Bier bblijn, int bestelbonid) {
 		Map<String, Object> kolomWaarden = new HashMap<>(); 
-		kolomWaarden.put("bierid", bblijn.getBierid()); 
+		kolomWaarden.put("bestelbonid", bestelbonid);
+		kolomWaarden.put("bierid", bblijn.getId()); 
 		kolomWaarden.put("aantal", bblijn.getAantal());
 		kolomWaarden.put("prijs", bblijn.getPrijs());
+	
+		simpleJdbcInsert.execute(kolomWaarden); 
 		
-		Number id = simpleJdbcInsert.executeAndReturnKey(kolomWaarden); 
-		bblijn.setBestelbonid(id.intValue()); 
 		}
+	
+	public void bblijnenNaarDB(List<Bier> bblijnen, int bestelbonid) {
+		
+		for(Bier b :bblijnen) {
+			
+			create(b, bestelbonid);
+			
+		}
+		
+	}
 }

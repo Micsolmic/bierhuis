@@ -36,7 +36,7 @@ class ControllersConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
-		source.setBasename("classpath:teksten.properties");
+		source.setBasename("classpath:messages.properties");
 		source.setFallbackToSystemLocale(false);
 		return source;
 	}

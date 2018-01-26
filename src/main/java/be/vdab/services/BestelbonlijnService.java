@@ -1,7 +1,10 @@
 package be.vdab.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import be.vdab.entities.Bier;
 import be.vdab.repositories.BestelbonlijnRepository;
 
 @Service
@@ -13,5 +16,10 @@ public class BestelbonlijnService {
 		this.bblR = bblR;
 	}
 	
+	public void bblijnenNaarDB(List<Bier> bblijnen, int bestelbonid) {
+		
+		bblR.bblijnenNaarDB(bblijnen, bestelbonid);
+		
+	}
 	
 }

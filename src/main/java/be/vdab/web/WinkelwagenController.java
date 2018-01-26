@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import be.vdab.entities.Bestelbon;
+import be.vdab.services.BestelbonService;
+import be.vdab.services.BestelbonlijnService;
 
 @Controller
 @RequestMapping("/winkelwagen")
@@ -19,7 +21,15 @@ import be.vdab.entities.Bestelbon;
 public class WinkelwagenController {
 
 	private static final String WINKELWAGEN_VIEW = "winkelwagen";
-
+	private final BestelbonlijnService bblserv;
+	private final BestelbonService bbserv;
+	
+	
+	public WinkelwagenController(BestelbonlijnService b, BestelbonService bb) {
+		bblserv = b;
+		bbserv = bb;
+	}
+	
 	@GetMapping
 	ModelAndView getBrouwersView(@SessionAttribute(name = "mandje") Mandje mandje, Model model) {
 		
@@ -30,14 +40,34 @@ public class WinkelwagenController {
 	}
 
 	@PostMapping(params = {"naam"}) 
-	String handle(@Valid Bestelbon bestelbon, BindingResult bindingResult) {
+	ModelAndView handle(@Valid Bestelbon bestelbon, BindingResult bindingResult, @SessionAttribute(name = "mandje") Mandje mandje) {
 		
 		if (bindingResult.hasErrors()) {
-			return "/winkelwagen";
+			return new ModelAndView("/winkelwagen").addObject(mandje);
 		}else {
 			System.out.println("hiiiaa");
-			return "redirect:/success";
+			
+			int id = bbonNaarDB(bestelbon);
+		
+			int bevestigdBbonNummer = bblijnenNaarDB(mandje, id);
+			
+			System.out.println("tot hier");
+			
+			
+			return new ModelAndView("redirect:/success/"+bevestigdBbonNummer);
 		}
 	}
 
+	
+	public int bblijnenNaarDB(Mandje mandje, int id) {
+		
+		bblserv.bblijnenNaarDB(mandje.getInhoud(), id);
+		return id;
+	}
+	
+	public int bbonNaarDB(Bestelbon bestelbon) {
+		
+		return bbserv.create(bestelbon);
+		
+	}
 }

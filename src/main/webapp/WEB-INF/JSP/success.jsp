@@ -7,8 +7,13 @@
 <html>
 <v:head title='Bestelling successvol!'/>
 <body>
-<v:links/>
-<h1>Je winkelwagentje is bevestigd als bestelbon nummer</h1>
+<div id='links'>
+<a href='<c:url value="/"/>'>Welkom</a>
+<a href='<c:url value="/brouwers"/>'>Brouwers</a>
+
+</div>
+
+<h1>Je winkelwagentje is bevestigd als bestelbon nummer ${bestelbonid}</h1>
 
 
 </body>

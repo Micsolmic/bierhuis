@@ -33,7 +33,9 @@ public class BierenRepository {
 				new Soort(resultSet.getInt("soortid"), resultSet.getString("soortnaam")),
 				resultSet.getDouble("alcohol"), resultSet.getBigDecimal("prijs"), 0);
 	};
-
+	
+	
+	
 	BierenRepository(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
 		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
 		this.jdbcTemplate = jdbcTemplate;
@@ -46,11 +48,19 @@ public class BierenRepository {
 	}
 
 	public Optional<Bier> read(long id) {
+		
+		System.out.println(countBieren());
+		
 		try {
 			return Optional.of(jdbcTemplate.queryForObject(SINGLE_SQL_READ, rowMapper, id));
 		} catch (IncorrectResultSizeDataAccessException ex) {
 			return Optional.empty(); // record niet gevonden
 		}
+	}
+	
+	public int countBieren() {
+		return (int) jdbcTemplate.queryForObject("select count(*) from bieren", Long.class).intValue();
+		
 	}
 
 }

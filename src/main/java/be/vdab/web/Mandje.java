@@ -37,9 +37,20 @@ public class Mandje implements Serializable{
 			
 	public List<Bier> getInhoud() {return inhoud;}
 
-	public void addBier(Bier bier) {
-		this.inhoud.add(bier);
-		updateSom(bier);
+	public void addBier(Bier bier0) {
+		
+		
+		
+		for(Bier b: this.inhoud) {
+			if(b.getId()==bier0.getId()) {
+				b.setAantal(b.getAantal()+bier0.getAantal());
+				updateSom(bier0);
+				return;
+			}
+		}
+		
+		this.inhoud.add(bier0);
+		updateSom(bier0);
 		
 	}
 

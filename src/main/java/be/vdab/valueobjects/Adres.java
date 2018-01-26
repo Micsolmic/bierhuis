@@ -3,15 +3,19 @@ package be.vdab.valueobjects;
 import java.io.Serializable;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 public class Adres implements Serializable {
 
 	static final long SerialVersionUID = 5L;
 	
-	private String straat;
+	@Size(min=2, max=30, message="   bestaat niet")
+	private String straat;	
+	@Min(value=1, message="   begint bij 1")
 	private int huisNr;
-	@Min(1000)
+	@Min(value=1000, message="    begint bij 1000")
 	private int postcode;
+	@Size(min=2, max=30, message="    bestaat niet")
 	private String gemeente;
 	
 	

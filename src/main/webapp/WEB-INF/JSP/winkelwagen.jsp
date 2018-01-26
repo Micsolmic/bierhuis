@@ -24,7 +24,7 @@
 <form:label path='adres.straat'>Straat<form:errors path='adres.straat'/></form:label> <br>
 <form:input path='adres.straat' autofocus='autofocus' required='required' maxlength='50'/> <br>
 <form:label path='adres.huisNr'>Huisnummer<form:errors path='adres.huisNr'/></form:label> <br>
-<form:input path='adres.huisNr' autofocus='autofocus' required='required' maxlength='50'/> <br>
+<form:input path='adres.huisNr' autofocus='autofocus' required='required' maxlength='50' type='number'/> <br>
 <form:label path='adres.postcode'>Postcode<form:errors path='adres.postcode'/></form:label> <br>
 <form:input path='adres.postcode' autofocus='autofocus' required='required' maxlength='50'/> <br>
 <form:label path='adres.gemeente'>Gemeente<form:errors path='adres.gemeente'/></form:label> <br>
